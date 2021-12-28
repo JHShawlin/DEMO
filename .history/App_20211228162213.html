@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>my_game</title>
+        <link rel="stylesheet" href="./style.css">
+        <style>
+            .map-layer{
+                background-image: url(./img/background.jpg);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="scene">
+
+            <div class="war-layer">
+                <img src="./img/plane.png" id="hero">     
+            </div>
+
+            <div class="map-layer"></div>
+
+        </div>
+
+        <script>
+            // 4. 获取游戏场景
+            var scene = document.getElementsByClassName('scene')[0];
+            // 获取战斗层
+            var warLayer = document.getElementsByClassName('war-layer')[0];
+            // 5. 获取小飞机
+            var hero = document.getElementById('hero');
+            
+            // 7.发射子弹
+            function makeBullet() {
+                // 生成子弹元素
+                var bullet1 = document.createElement('img')
+                // 设置子弹图片
+                bullet1.src = "./img/bullet.png"
+                // 这是子弹样式
+                bullet1.setAttribute('class', 'bullet')
+                // 设置子弹位置，在飞机头部中间位置发射
+                bullet1.style.left = hero.offsetLeft + hero.offsetWidth / 2 + 'px'
+                bullet1.style.top = hero.offsetTop - 20 + 'px'
+    
+                // 把子弹添加到战斗层页面上
+                warLayer.appendChild(bullet1)
+              
+                // 生成子弹元素
+                var bullet2 = document.createElement('img')
+                // 设置子弹图片
+                bullet2.src = "./img/bullet.png"
+                // 这是子弹样式
+                bullet2.setAttribute('class', 'bullet')
+                // 设置子弹位置，在飞机头部中间位置发射
+                bullet2.style.left = hero.offsetLeft + hero.offsetWidth / 2 - 10 + 'px'
+                bullet2.style.top = hero.offsetTop - 20 + 'px'
+    
+                // 把子弹添加到战斗层页面上
+                warLayer.appendChild(bullet2)
+            }
+        </script>
+        <script src="./index.js"></script>
+    
+    </body>
+</html>
