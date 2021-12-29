@@ -84,7 +84,7 @@ set=setInterval(function () {
         }
 
         if (hero.offsetLeft >= enemy.offsetLeft && hero.offsetLeft <= enemy.offsetLeft+enemy.offsetWidth
-            && hero.offsetTop >= enemy.offsetTop && hero.offsetTop <= enemy.offsetTop+enemy.offsetHeight) {
+            && hero.offsetTop >= enemy.offsetTop && bullet.offsetTop <= enemy.offsetTop+enemy.offsetHeight) {
                 if (document.removeEventListener) {
                     scene.removeEventListener("mousemove", move);
                 } else if (document.detachEvent) {

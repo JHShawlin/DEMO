@@ -12,8 +12,7 @@ var scorelabel=document.getElementById("label");
 var scores=0;
 // 6. 使用鼠标移动小飞机
 // 鼠标移动事件
-
-var move=function (event) {
+scene.addEventListener("mousemove", function (event) {
 
     // 获得鼠标的位置坐标
     var x = event.clientX;
@@ -22,9 +21,9 @@ var move=function (event) {
     // 把鼠标的坐标赋值给飞机
     hero.style.top = y - hero.offsetHeight / 2 + 'px';
     hero.style.left = x - hero.offsetWidth / 2 + 'px';
-}
+})
 
-scene.addEventListener("mousemove", move);
+
 
 // 7.发射子弹
 function makeBullet() {
@@ -55,7 +54,7 @@ var timer = setInterval(function () {
 var speed = 10;
 var espeed = 8;
 // 9.子弹移动动画
-set=setInterval(function () {
+setInterval(function () {
 
     var bullets = document.getElementsByClassName('bullet');
     var enemies = document.getElementsByClassName('enemy');
@@ -82,17 +81,6 @@ set=setInterval(function () {
 
             warLayer.removeChild(enemy);
         }
-
-        if (hero.offsetLeft >= enemy.offsetLeft && hero.offsetLeft <= enemy.offsetLeft+enemy.offsetWidth
-            && hero.offsetTop >= enemy.offsetTop && hero.offsetTop <= enemy.offsetTop+enemy.offsetHeight) {
-                if (document.removeEventListener) {
-                    scene.removeEventListener("mousemove", move);
-                } else if (document.detachEvent) {
-                    scene.detachEvent("onmousemove", move);
-                }
-                clearInterval(set);
-                clearInterval(timer);
-            }
         for (var j = 0; j < bullets.length; j++) {
             var bullet = bullets[j];
             if (bullet.offsetLeft >= enemy.offsetLeft && bullet.offsetLeft <= enemy.offsetLeft+enemy.offsetWidth

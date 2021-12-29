@@ -55,7 +55,7 @@ var timer = setInterval(function () {
 var speed = 10;
 var espeed = 8;
 // 9.子弹移动动画
-set=setInterval(function () {
+setInterval(function () {
 
     var bullets = document.getElementsByClassName('bullet');
     var enemies = document.getElementsByClassName('enemy');
@@ -84,14 +84,12 @@ set=setInterval(function () {
         }
 
         if (hero.offsetLeft >= enemy.offsetLeft && hero.offsetLeft <= enemy.offsetLeft+enemy.offsetWidth
-            && hero.offsetTop >= enemy.offsetTop && hero.offsetTop <= enemy.offsetTop+enemy.offsetHeight) {
+            && hero.offsetTop >= enemy.offsetTop && bullet.offsetTop <= enemy.offsetTop+enemy.offsetHeight) {
                 if (document.removeEventListener) {
                     scene.removeEventListener("mousemove", move);
                 } else if (document.detachEvent) {
                     scene.detachEvent("onmousemove", move);
                 }
-                clearInterval(set);
-                clearInterval(timer);
             }
         for (var j = 0; j < bullets.length; j++) {
             var bullet = bullets[j];
